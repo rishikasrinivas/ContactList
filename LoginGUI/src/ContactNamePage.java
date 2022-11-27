@@ -43,7 +43,7 @@ public class ContactNamePage implements ActionListener{
 	JButton contactNameFirst;
 	JTextField txt = new JTextField();
 	JPanel panel;
-	int contactCardRad = 100;
+	int contactCardWidth = 100;
 	int contactCardX = 10;
 	int contactCardY = 10;
 	int plusbuttonwidth = 50;
@@ -74,17 +74,12 @@ public class ContactNamePage implements ActionListener{
 				super.paint(g);
 				//make the circle
 				g.setColor(Color.RED);
-				g.drawOval(contactCardX/2, contactCardY/2, contactCardRad, contactCardRad);
-				//g.fillOval(contactCardX/2, contactCardY/2, contactCardRad, contactCardRad);
-				//go through the file to get the initials
+				g.drawOval(contactCardX/2, contactCardY/2, contactCardWidth, contactCardWidth);
 				g.setColor(Color.BLACK);
 				
-				//ate the persons
-				//contact from their contacts
 				g.setColor(Color.BLACK);
-				g.draw3DRect(0, 7+contactCardRad, Main.len, 1, getFocusTraversalKeysEnabled());
+				g.draw3DRect(0, 7+contactCardWidth, Main.len, 1, getFocusTraversalKeysEnabled());
 				
-				//font obj for initials
 				
 			}
 			
@@ -96,14 +91,14 @@ public class ContactNamePage implements ActionListener{
 		frame.setSize(Main.len,Main.len);
 		
 		
-		Font init  = createFont("College", Font.PLAIN, contactCardRad/2);
+		Font init  = createFont("College", Font.PLAIN, contactCardWidth/2);
 		//place the initials text
 		String[] ui= findInitials();
 		userInitials.setText(ui[0]);
 		int initHeight = getTextHeight(init,userInitials.getText());
 		int initWidth = getTextWidth(init,userInitials.getText());
 		userInitials.setFont(init);
-        userInitials.setBounds(contactCardX+initWidth/4,contactCardY+initHeight/4,initWidth*2,initHeight);
+        userInitials.setBounds((contactCardWidth/2) - (initWidth/2) ,contactCardY+initHeight/4,initWidth*2,initHeight);
         panel.add(userInitials);
 		
         //+ button
@@ -120,7 +115,7 @@ public class ContactNamePage implements ActionListener{
 		panel.add(nameheaders);
 	
 		//create text to welcome the user
-		Font welcome  = createFont("College", Font.PLAIN, contactCardRad/2);
+		Font welcome  = createFont("College", Font.PLAIN, contactCardWidth/2);
 		//place the initials text
 		String[] greet = findInitials();
 		greeting.setText("Welcome " + greet[1]);
@@ -128,7 +123,7 @@ public class ContactNamePage implements ActionListener{
 		int greetWidth = getTextWidth(welcome,greeting.getText());
 		greeting.setFont(welcome);
 		greeting.setForeground(Color.RED);
-		greeting.setBounds(contactCardX+contactCardRad,contactCardY+greetHeight/4,greetWidth*2,greetHeight);
+		greeting.setBounds((Main.len/2)-(greetWidth/2),greetHeight/4,greetWidth*2,greetHeight);
         panel.add(greeting);
 		
 		panel.setLayout(null);

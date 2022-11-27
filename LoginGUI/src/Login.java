@@ -51,7 +51,7 @@ public class Login implements ActionListener {
 		panel = new JPanel(); 
 		
 		loginlabel = new JLabel(loginString);
-		loginlabel.setBounds(150,0,loginString.length()*100, loginString.length()*2);
+		loginlabel.setBounds(Main.len/(14/3),0,loginString.length()*100, loginString.length()*2);
 		panel.add(loginlabel);
 		//configure the frame
 		frame.setSize(len,width);
@@ -63,35 +63,36 @@ public class Login implements ActionListener {
 		panel.setLayout(null);
 		
 		userlabel = new JLabel("User"); 
-		userlabel.setBounds(20,20,80,25);
+		userlabel.setBounds(Main.len/35,Main.len/35,80,25);
 		panel.add(userlabel);
 		
 		userTxt = new JTextField();
-		userTxt.setBounds(100,20,165,25);
+		userTxt.setBounds(Main.len/7,Main.len/35,165,25);
 		panel.add(userTxt);
 		
 		passwordLbl = new JLabel("Password"); 
-		passwordLbl.setBounds(10,50,80,25);
+		passwordLbl.setBounds(Main.len/70,Main.len/14,80,25);
 		panel.add(passwordLbl);
 		
 		passTxt = new JPasswordField();
-		passTxt.setBounds(100,50,165,25);
+		passTxt.setBounds(Main.len/7,Main.len/14,165,25);
 		panel.add(passTxt);
 		
 		
 		loginbutton = new JButton("Login");
-		loginbutton.setBounds(10,80,80,25);
+		loginbutton.setBounds(Main.len/70,4*Main.len/35,80,25);
 		loginbutton.addActionListener(this);
 		panel.add(loginbutton);
 		
 		createaccountbutton = new JButton("Create an account");
-		createaccountbutton.setBounds(90,80,160,25);
+		createaccountbutton.setBounds(Main.len/(70/9),4*Main.len/35,160,25);
 		createaccountbutton.addActionListener(this);
 		panel.add(createaccountbutton);
 		
-		success = new JLabel("");
-		success.setBounds(10,110,300,25);
-		panel.add(success);
+		/*success = new JLabel("");
+		success.setBounds(Main.len/70,11*Main.len/70,300,25);
+		panel.add(success);*/
+		
 		frame.setVisible(true);
 	}
 
@@ -146,12 +147,12 @@ public class Login implements ActionListener {
 	
 	public JPanel missing(String message) {
 		//prints an error msg
-		error.setBounds(10,errormsgY,10*userlabel.getText().length(),25);
 		error.setText(message);
-		frame.add(error);
+		error.setBounds(10,11*Main.len/70,100*userlabel.getText().length(),15);
+		panel.add(error);
 		panel.setLayout(null);
 		frame.setVisible(true);
-		panel.revalidate();
+		frame.repaint();
 		return panel;
 	}
 	
